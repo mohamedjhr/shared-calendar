@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101013">
+  <title>Calendrier partagé</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <header class="header">
+    <div class="brand-and-heading"><img class="brand-logo" src="images/logo.png" alt="Logo" onerror="this.hidden=true" onload="this.hidden=false"><br><div class="eyebrow">PLANNING D’ÉQUIPE</div><h1>Calendrier partagé</h1><p class="subhead">Réservez un créneau et consultez les disponibilités de chacun.</p></div>
+    <div class="status" id="status"><span class="status-dot"></span><span id="statusText">Connexion en cours…</span></div>
+  </header>
+  <div id="setupNotice" class="notice hidden" role="alert"></div>
+  <section class="toolbar" aria-label="Navigation dans le calendrier">
+    <div><div id="rangeLabel" class="range"></div><div class="micro">Créneaux de 30 minutes</div><div class="micro"> — Merci de respecter les horaires réservés et de remettre le matériel à sa place après chaque utilisation</div></div>
+    <div class="navigation"><button type="button" id="prevWeek" class="navbtn" aria-label="Semaine précédente">‹</button><button type="button" id="currentWeek" class="todaybtn">Cette semaine</button><button type="button" id="nextWeek" class="navbtn" aria-label="Semaine suivante">›</button></div>
+  </section>
+  <div class="legend"><span><i class="swatch available"></i> Disponible</span><span><i class="swatch reserved"></i> Réservé</span><span><i class="swatch past"></i> Passé</span></div>
+  <section class="calendar-wrap" aria-label="Calendrier hebdomadaire"><div class="calendar" id="calendar"></div></section>
+  <footer><p>Seules la semaine en cours et la semaine suivante sont disponibles. Les semaines précédentes disparaissent automatiquement.</p><img class="partners-logo" src="images/partners.png" alt="Partenaires" onerror="this.hidden=true" onload="this.hidden=false"></footer>
+</main>
+<dialog id="bookingDialog" aria-labelledby="dialogTitle"><form method="dialog" id="bookingForm"><div class="dialogtop"><div><div class="eyebrow">CRÉNEAU</div><h2 id="dialogTitle">Réserver un créneau</h2><p id="dialogTime"></p></div><button value="cancel" class="closebtn" aria-label="Fermer" formnovalidate>×</button></div><label for="personName">Nom</label><input id="personName" name="personName" autocomplete="name" maxlength="60" required placeholder="Votre nom"><p id="dialogError" class="error" role="alert"></p><div class="dialogactions"><button type="button" id="deleteBooking" class="danger hidden">Supprimer la réservation</button><button type="button" id="cancelDialog" class="secondary">Annuler</button><button type="submit" id="saveBooking" class="primary">Réserver</button></div></form></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
